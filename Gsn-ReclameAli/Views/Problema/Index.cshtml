@@ -1,0 +1,119 @@
+﻿@model Gsn_ReclameAli.Models.ProblemaModel
+@{
+    ViewData["Title"] = "Cadastro de Problema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-icon">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">@(Model?.ProblemaId > 0 ? "Atualizar Problema":"Cadastrar Problema")</h1>
+                    @* <ul class="breadcrumb-nav">
+                    <li> <a class="btn" href="@Url.Action("Index","Home")">Home</a></li>
+                    </ul>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="about section">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="row mb-4">
+
+                @using (Html.BeginForm("Salvar", "Problema", FormMethod.Post, new { @class = "contact-from form-valide" }))
+                {
+                    @Html.HiddenFor(p => p.ProblemaId)
+                    <div class="form-control">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <label>Qual Problema Você deseja Relatar?</label>
+                                    @Html.TextBoxFor(p => p.Titulo ,new { @class="form-control" ,@placeholder = "Que Problema Você deseja Relatar", required="required"} )
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <label>Descreva o Problema</label>
+                                    @Html.TextBoxFor(p => p.Descricao ,new {@class="form-control", @placeholder = "Descreva o Problema", required="required"} )
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <label>Rua</label>
+                                    @Html.TextBoxFor(p => p.Rua ,new {@class="form-control", @placeholder = "Digite a Rua", required="required"} )
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-outline">
+                                    <label>Cidade</label>
+                                    @Html.TextBoxFor(p => p.Cidade,new {@class="form-control", @placeholder = "Digite o Bairro", required="required"} )
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-outline">
+                                    <label>Cep</label>
+                                    @Html.TextBoxFor(p => p.Numero ,new {@class="form-control", @placeholder = "Digite o Cep", required="required"} )
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-outline">
+                                    <label>Estado</label>
+                                    @Html.TextBoxFor(p => p.Estado ,new {@class="form-control", @placeholder = "Digite o Estado", required="required"} )
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-outline">
+                                    <label class="custom-control-label">Solucionado</label>
+                                    <select class="form-control" id="solucionado" name="solucionado">
+                                        <option value="true">Sim</option>
+                                        <option value="False">Não</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <button class="btn-outline-primary" type="submit" name="submit" value="Salvar">
+                                @(Model?.ProblemaId > default(int)? "Atualizar":"Salvar")
+                            </button>
+                            <br>
+
+                        </div>
+                        <a class="d-flex justify-content-center" href="@Url.Action("Index","Home")">
+                            Voltar
+                        </a>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+

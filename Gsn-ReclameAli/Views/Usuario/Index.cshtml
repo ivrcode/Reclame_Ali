@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+<div class="signup">
+
+    @using (Html.BeginForm("SalvarUsuario", "Usuario", FormMethod.Post))
+    {
+
+        <label for="chk" aria-hidden="true">Cadastro</label>
+        @if (ViewBag.Usuario != null)
+        {
+            @ViewBag.Usuario
+        }
+        <input type="text" name="nome" id="nome" placeholder="Nome de usuário" required="">
+        <input type="email" name="email" id="email" placeholder="E-mail" required="">
+        <input type="password" name="senha" id="senha" placeholder="Digite a Senha" required="">
+
+        <button type="submit">Sign up</button>
+        <button><a class="col-sn-3" href="@Url.Action("Index","Home")">Voltar</a></button>
+
+    }
+</div>
+
+<div class="login">
+    @using (Html.BeginForm("Logar", "Usuario", FormMethod.Post))
+    {
+        <label for="chk" aria-hidden="true">Login</label>
+        @if (ViewBag.Login != null)
+        {
+            @ViewBag.Login           
+
+        }
+        <input type="email" name="email" id="email" placeholder="E-mail" required="">
+        <input type="password" name="senha" id="senha" placeholder="Senha" required="">
+
+        <button type="submit">Login</button>
+        <button><a class="col-sn-3" href="@Url.Action("Index","Home")">Voltar</a></button>
+
+    }
+</div>
+
+
+

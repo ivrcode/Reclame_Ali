@@ -1,0 +1,56 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gsn Reclame Ali</title>
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap-grid.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap-reboot.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap-utilities.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" />
+    @*<link rel="stylesheet" href="@Url.Content("~/Gsn_ReclameAli.styles.css")"/>*@
+
+    <link rel="icon" type="image/png" href="~/images/favicon.png">
+    <link rel="stylesheet" href="@Url.Content("~/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/LineIcons.3.0.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/animate.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/tiny-slider.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/glightbox.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/js/datatables/css/jquery.dataTables.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/main.css")" />
+    <script src="@Url.Content("~/js/jquery/jquery.min.js")"></script>
+
+
+
+
+</head>
+<body>
+    <partial name="~/Views/Shared/_Partial/Header.cshtml" />
+    <div id="main-wrapper">
+        @RenderBody()
+    </div>
+
+
+    <a href="#" class="scroll-top">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+   
+    <script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+    <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.bundle.min.js")"></script>
+    <script src="@Url.Content("~/js/site.js")" asp-append-version="true"></script>
+    <script src="@Url.Content("~/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/js/wow.min.js")"></script>
+    <script src="@Url.Content("~/js/tiny-slider.js")"></script>
+    <script src="@Url.Content("~/js/glightbox.min.js")"></script>
+    <script src="@Url.Content("~/js/count-up.min.js")"></script>
+    <script src="@Url.Content("~/js/imagesloaded.min.js")"></script>
+    <script src="@Url.Content("~/js/isotope.min.js")"></script>
+    <script src="@Url.Content("~/js/main.js")"></script>
+    <script src="@Url.Content("~/js/datatables/js/jquery.dataTables.min.js")"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

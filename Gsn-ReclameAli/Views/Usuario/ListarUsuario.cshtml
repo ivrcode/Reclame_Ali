@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Lista de Usuários";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-icon">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Lista de Usuarios</h1>
+                    <ul class="breadcrumb-nav">
+                        <li> <a class="btn" href="@Url.Action("Index","Home")"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="about section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @if (@ViewBag.Sucess != null)
+                {
+                    <div class="alert alert-success">
+                        <strong>@ViewBag.Sucess</strong>
+                    </div>
+                }
+                @if (@ViewBag.Erro != null)
+                {
+                    <div class="alert alert-danger">
+                        <strong>@ViewBag.Erro!</strong>
+                    </div>
+                }
+                <div class="card">
+                    <div class="card-body">
+                        <table id="lstUsuario" class="display"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        ListarUsuario();
+    });
+
+    function ListarUsuario() {
+        $.ajax({
+            type: 'GET',
+            async: true,
+            url: '@Url.Action("ListarUsuarios","Usuario")',
+            success: function(data) {
+                $('#lstUsuario').DataTable({
+                    language: {
+                        lengthMenu: 'Mostrar _MENU_ quantidade por página',
+                        zeroRecords: 'Nada encontrado - desculpe',
+                        info: 'Mostrando página _PAGE_ por _PAGES_',
+                        infoEmpty: 'Não há registros disponíveis',
+                        infoFiltered: '(filtrado de _MAX_ registros totais)',
+                        search: "Buscar:",
+                        paginate: {
+                            first: "Primeiro",
+                            last: "Último",
+                            next: "Próximo",
+                            previous: "Anterior"
+                        },
+                    },
+                    data: data.model,
+                    columns: [
+                        { title: "ID", data: "usuarioId" },
+                        { title: "Nome", data: "nome" },
+                        { title: "E-mail", data: "email" },
+                        {
+                            data: "usuarioId",
+                            className: "dt-center editor-edit",
+                            render: function(data, type, row, meta) {
+                                return '<a href="@Url.Action("ExcluirUsuarios","Usuario")?usuarioId=' + data + '">Excluir</a>'
+                            },
+                            orderable: false
+                        }
+                    ],
+                });
+            }
+        });
+    }
+</script>
